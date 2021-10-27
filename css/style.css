@@ -48,7 +48,8 @@ body {
 }
 
 .search-bar {
-  width: 20%;
+    height: 2.625rem;
+  flex-basis: 50%;
   border-radius: 3em;
   font-size: 1rem;
 }
@@ -58,10 +59,15 @@ body {
     color: white;
     background-color:#ff9826 ;
     user-select: none;
-    height: 80px;
+  flex-basis: 50%;
+  height: 80px;
   /* text-overflow: ellipsis; */
-  width: 80%;
   overflow: hidden;
+}
+
+.search-words.read-more{
+    overflow: visible;
+    height: 100%;
 }
 
 .read-btn{

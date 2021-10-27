@@ -80,7 +80,6 @@ function prevInput(){
 
 function changeText(value){
     gMeme.lines[gline].txt=value
-    console.log(gMeme.lines)
     return gMeme.lines
 }
 
@@ -128,8 +127,7 @@ function resetWords(words){
     var elContainer=document.querySelector(".search-words")
     words.forEach(word => {
         var randSize=Math.floor(Math.random()*60+10)
-        console.log(randSize)
-        elContainer.innerHTML+=`<span onclick="upSearchFont(event,this)" style="font-size:${randSize}px;">${word.value}\t</span>`
+        elContainer.innerHTML+=`<span onclick="upSearchFont(this)" style="font-size:${randSize}px;">${word.value}</span>\t`
     });
-    elContainer.innerHTML+="<button class='read-btn' onclick='showText()'>read more</button>"
+    elContainer.innerHTML+="<button class='read-btn' onclick='showText()'>show more</button>"
 }

@@ -71,26 +71,39 @@ function onNav(whereTo){
     toggleMenu()
 }
 
-function onSearch(word,e=true){
+function onSearch(word,e){
     if(e.key==='Enter'){
     var elImgs=document.querySelectorAll('.gallery-image')
-        search(word.value,elImgs)
+
+    search(word.value,elImgs)
         var elSearchBar=document.querySelector(".search-bar")
         elSearchBar.value=""
     }
 }
-
-function upSearchFont(e,word){
-    event.preventDefault()
+function wordSearch(word){
+    var elImgs=document.querySelectorAll('.gallery-image')
+        search(word.value,elImgs)
+}
+function upSearchFont(word){
    var num= word.style.fontSize.split("p")
     num=+num[0]
     num+=5
     word.style.fontSize=num+"px"
-    console.log(num)
+    var wordSearch={value:word.innerText}
+    var e={
+        key:'Enter'
+    }
+    onSearch(wordSearch,e)
 }
 
 function showText(){
     var elWords=document.querySelector(".search-words")
-    elWords.style.overflow="visible";
-    elWords.style.height="100%";
+    elWords.classList.toggle("read-more")
+    var elBtn=document.querySelector(".read-btn")
+    if(elWords.classList.contains("read-more")){
+        elBtn.innerHTML="show less"
+    }else{
+        elBtn.innerHTML="show more"
+
+    }
 }
