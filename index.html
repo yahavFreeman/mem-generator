@@ -7,9 +7,28 @@
     <link rel="stylesheet" href="css/style.css">
     <title>meme generator</title>
 </head>
-<body>
-    
-
+<body onload="init()">
+    <header class="main-header flex space-between">
+        <img src="img/LOGO.png" class="logo">
+        <ul class="flex clean-list">
+            <li>Meme</li>
+            <li>Gallery</li>
+            <li>About</li>
+        </ul>
+    </header>
+    <main class="main-content">
+        <div class="main-canvas center flex">
+            <canvas id="my-canvas" height="800" width="800" onclick="console.log('hi')">
+            </canvas>
+            <div class="user-input">
+             <input class="meme-input" type="text" placeholder="I never eat Falafel" onkeyup="onChangeText(this)" >
+            </div>
+        </div>
+        <div class="image-gallery gallery-grid">
+            <img id="1" src="img/1.jpg" onclick="onDraw(this)">
+            <img id="2" src="img/2.jpg" onclick="onDraw(this)">
+        </div>
+    </main>
 
     <script src="js/service/storage.service.js"></script>
     <script src="js/service/meme.service.js"></script>
