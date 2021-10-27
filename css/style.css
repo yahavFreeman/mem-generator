@@ -43,6 +43,8 @@ margin-right: auto;
 
 .meme-input{
     height: 20px;
+}
+.user-input{
     display: none;
 }
 

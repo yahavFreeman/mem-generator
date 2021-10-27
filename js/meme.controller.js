@@ -9,21 +9,37 @@ function init() {
 }
 
 function onDraw(img){
+    reset()
     gCurrImg=img
-draw(img)
-var img=getImgInfo(img.id)
-setMeme(img.id)
-var meme=getMeme()
-addText(meme[0])
-var elInput=document.querySelector(".meme-input")
-elInput.style.display='inline-block'
+    displayMeme()
+    var elInput=document.querySelector(".meme-input")
+elInput.value=""
 }
 
 function onChangeText(input){
     var inputValue=input.value
     changeText(inputValue)
-onDraw(gCurrImg)
+    displayMeme()
 }
 
+function displayMeme(){
+    draw(gCurrImg)
+    setMeme(gCurrImg.id)
+// var img=getImgInfo(gCurrImg.id)
+var meme=getMeme()
+addText(meme[0])
+var elUserInput=document.querySelector(".user-input")
+elUserInput.style.display='inline-block'
 
+}
+
+function onFont(num){
+    changeFont(num)
+    displayMeme()
+}
+
+function onHeight(num){
+changeHeight(num)
+displayMeme()
+}
 
