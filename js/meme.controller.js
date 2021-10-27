@@ -12,8 +12,7 @@ function onDraw(img){
     reset()
     gCurrImg=img
     displayMeme()
-    var elInput=document.querySelector(".meme-input")
-elInput.value=""
+    clearInput()
 }
 
 function onChangeText(input){
@@ -27,7 +26,9 @@ function displayMeme(){
     setMeme(gCurrImg.id)
 // var img=getImgInfo(gCurrImg.id)
 var meme=getMeme()
-addText(meme[0])
+// var num=getLine()
+console.log(meme)
+addText(meme)
 var elUserInput=document.querySelector(".user-input")
 elUserInput.style.display='inline-block'
 
@@ -41,5 +42,18 @@ function onFont(num){
 function onHeight(num){
 changeHeight(num)
 displayMeme()
+}
+
+function onAddLine(){
+    addLine()
+    displayMeme()
+    clearInput()
+}
+
+function onSwitchLine(){
+    switchLine()
+    displayMeme()
+    clearInput()
+    prevInput()
 }
 

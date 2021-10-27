@@ -1,5 +1,6 @@
 'use strict'
 var gline=0
+var gScrollLine=0
 var gKeywords = {'happy': 12,'funny puk': 1} 
 var gImgs = [{id: 1, url: 'img/1.jpg', keywords: ['funny']},
 {id: 2, url: 'img/2.jpg', keywords: ['happy']}]; 
@@ -51,14 +52,29 @@ function getMeme(){
     return gMeme.lines
 }
 
-function addText(memeLines){
-    gCtx.font=`${memeLines.size}px Impact`;
-    gCtx.textAlign = `${memeLines.align}`;
-    gCtx.fillStyle = `${memeLines.color}`;
-    gCtx.fillText(`${memeLines.txt}`,gElCanvas.width/2,`${memeLines.height}`)
-    gCtx.strokeStyle='black';
-    gCtx.strokeText(`${memeLines.txt}`,gElCanvas.width/2,`${memeLines.height}`)
+function getLine(){
+    return gline
+}
 
+function addText(memeLines){
+    memeLines.forEach(meme => {
+        gCtx.font=`${meme.size}px Impact`;
+        gCtx.textAlign = `${meme.align}`;
+        gCtx.fillStyle = `${meme.color}`;
+        gCtx.strokeStyle='black';
+        gCtx.fillText(`${meme.txt}`,gElCanvas.width/2,`${meme.height}`)
+        gCtx.strokeText(`${meme.txt}`,gElCanvas.width/2,`${meme.height}`) 
+    });
+
+}
+
+function clearInput(){
+    var elInput=document.querySelector(".meme-input")
+    elInput.value=""
+}
+function prevInput(){
+    var elInput=document.querySelector(".meme-input")
+    elInput.placeholder=`${gMeme.lines[gline].txt}`
 }
 
 function changeText(value){
@@ -73,4 +89,24 @@ function changeFont(num){
 
 function changeHeight(num){
     gMeme.lines[gline].height+=num
+}
+
+function addLine(){
+    gline+=1
+    var line={ txt: 'I never eat Falafel', 
+    size: 50, 
+    align: 'center', 
+    color: 'white',
+    height: gElCanvas.height/2
+}
+if(gline===1){
+    line.height=gElCanvas.height-100
+}
+    gMeme.lines.push(line)
+}
+
+
+function switchLine(){
+    gline=gScrollLine
+    gScrollLine+=1
 }
