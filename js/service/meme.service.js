@@ -109,4 +109,7 @@ if(gline===1){
 function switchLine(){
     gline=gScrollLine
     gScrollLine+=1
+    if(gScrollLine>=gline){
+        gScrollLine=0
+    }
 }
