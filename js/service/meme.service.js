@@ -71,6 +71,7 @@ function addText(memeLines){
 function clearInput(){
     var elInput=document.querySelector(".meme-input")
     elInput.value=""
+    if(gMeme.lines.length)
     elInput.placeholder=`${gMeme.lines[gline].txt}`
 }
 function prevInput(){
@@ -83,16 +84,26 @@ function changeText(value){
     return gMeme.lines
 }
 
+function delLine(){
+    gMeme.lines.splice(gline,1)
+    gline-=1
+}
+
 function changeFont(num){
     gMeme.lines[gline].size+=num
 }
 
 function changeHeight(num){
+    console.log(gline)
     gMeme.lines[gline].height+=num
 }
 
 function addLine(){
-    gline+=1
+    if(!gMeme.lines.length) {
+        reset()
+        return
+    }
+    gline=gMeme.lines.length
     var line={ txt: 'I never eat Falafel', 
     size: 50, 
     align: 'center', 
@@ -109,8 +120,12 @@ if(gline===1){
 function switchLine(){
     gline=gScrollLine
     gScrollLine+=1
-    if(gScrollLine>=gline){
+    console.log(gScrollLine)
+    console.log(gMeme.lines.length)
+    if(gScrollLine>gMeme.lines.length){
+        console.log('in')
         gScrollLine=0
+        gline=0
     }
 }
 

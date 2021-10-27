@@ -36,14 +36,17 @@
         <div class="main-canvas center flex">
             <canvas id="my-canvas" height="800" width="800" onclick="console.log('hi')">
             </canvas>
-            <div class="user-input">
+            <div class="user-input flex">
              <input class="meme-input" type="text" placeholder="I never eat Falafel" onkeyup="onChangeText(this)" >
-             <button class="size-change" onclick="onFont(5)">+</button>
-             <button class="size-change" onclick="onFont(-5)">-</button>
-             <button class="line-height" onclick="onHeight(5)">line height +</button>
-             <button class="line-height" onclick="onHeight(-5)">line height -</button>
-             <button class="line-height" onclick="onAddLine()">new line</button>
-             <button class="line-height" onclick="onSwitchLine()">switch line</button>
+             <div class="input-btns">
+                 <button class="size-change" onclick="onFont(5)">⬆</button>
+                 <button class="size-change" onclick="onFont(-5)">⬇</button>
+                 <button class="line-height" onclick="onHeight(5)">lower</button>
+                 <button class="line-height" onclick="onHeight(-5)">higher</button>
+                 <button class="line-height" onclick="onAddLine()">+</button>
+                 <button class="line-height" onclick="onSwitchLine()">⇅</button>
+                 <button class="line-height" onclick="onDelLine()">🗑</button>
+             </div>
              <button class="line-height" onclick="toggleMeme()">back to gallery</button>
             </div>
         </div>

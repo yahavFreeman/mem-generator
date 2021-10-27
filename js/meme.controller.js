@@ -23,25 +23,38 @@ function onChangeText(input){
     displayMeme()
 }
 
+function onDelLine(){
+    delLine()
+    displayMeme()
+    clearInput()
+}
+
 function displayMeme(){
     draw(gCurrImg)
     setMeme(gCurrImg.id)
 // var img=getImgInfo(gCurrImg.id)
 var meme=getMeme()
 // var num=getLine()
-console.log(meme)
+if (!meme.length){
+    return
+}
 addText(meme)
 var elUserInput=document.querySelector(".user-input")
-elUserInput.style.display='inline-block'
+elUserInput.style.display='flex'
+
 
 }
 
 function onFont(num){
+var meme=getMeme()
+if(!meme.length) return
     changeFont(num)
     displayMeme()
 }
 
 function onHeight(num){
+    var meme=getMeme()
+if(!meme.length) return
 changeHeight(num)
 displayMeme()
 }
@@ -53,9 +66,12 @@ function onAddLine(){
 }
 
 function onSwitchLine(){
+    var meme=getMeme()
+if(!meme.length) return
     switchLine()
     displayMeme()
     clearInput()
+    resetGLine()
 }
 
 function toggleMenu() {

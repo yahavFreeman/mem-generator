@@ -51,7 +51,21 @@ body {
     height: 2.625rem;
   flex-basis: 50%;
   border-radius: 3em;
+  margin-inline-end: 20px;
   font-size: 1rem;
+  
+}
+
+.input-btns>*{
+    height: 40px;
+    font-size: 1.5rem;
+    background-color:transparent;
+    border:none
+}
+
+.input-btns{
+display: flex;
+justify-content: center;
 }
 
 .search-words{
@@ -63,6 +77,7 @@ body {
   height: 80px;
   /* text-overflow: ellipsis; */
   overflow: hidden;
+  margin-inline-start: 20px;
 }
 
 .search-words.read-more{
@@ -101,7 +116,11 @@ body.meme-now .image-gallery{
   height: 20px;
 }
 .user-input {
-  display: none;
+    display: flex;
+  flex-direction: column;
+  /* flex-basis: 20%; */
+  margin-inline-start: 100px;
+  justify-content: center;
 }
 
 .image-gallery > * {
