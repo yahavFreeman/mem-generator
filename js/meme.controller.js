@@ -54,6 +54,14 @@ function onSwitchLine(){
     switchLine()
     displayMeme()
     clearInput()
-    prevInput()
+}
+
+function toggleMenu() {
+    document.body.classList.toggle('menu-open');
+}
+
+function onNav(whereTo){
+    if (document.body.classList.contains('menu-open'))
+    toggleMenu()
 }
 

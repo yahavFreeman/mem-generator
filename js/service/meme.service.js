@@ -71,6 +71,7 @@ function addText(memeLines){
 function clearInput(){
     var elInput=document.querySelector(".meme-input")
     elInput.value=""
+    elInput.placeholder=`${gMeme.lines[gline].txt}`
 }
 function prevInput(){
     var elInput=document.querySelector(".meme-input")

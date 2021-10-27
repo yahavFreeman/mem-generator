@@ -10,12 +10,19 @@
 <body onload="init()">
     <header class="main-header flex space-between">
         <img src="img/LOGO.png" class="logo">
-        <ul class="flex clean-list">
-            <li>Meme</li>
-            <li>Gallery</li>
-            <li>About</li>
+        <ul class="main-nav flex clean-list">
+            <button class="clse-menu" onclick="toggleMenu()">X</button>
+            <li onclick="onNav(this)">Meme</li>
+            <hr>
+            <li onclick="onNav(this)">Gallery</li>
+            <hr>
+            <li onclick="onNav(this)" class="last">About</li>
         </ul>
+        <button class="btn-menu" onclick="toggleMenu()">☰</button>
     </header>
+    <div class="search-bar-container">
+        <input class="search-bar" type="text" placeholder="Search">
+    </div>
     <main class="main-content">
         <div class="main-canvas center flex">
             <canvas id="my-canvas" height="800" width="800" onclick="console.log('hi')">
@@ -30,7 +37,7 @@
              <button class="line-height" onclick="onSwitchLine()">switch line</button>
             </div>
         </div>
-        <div class="image-gallery gallery-grid">
+        <div class="image-gallery gallery-grid center">
             <img id="1" src="img/1.jpg" onclick="onDraw(this)">
             <img id="2" src="img/2.jpg" onclick="onDraw(this)">
         </div>
