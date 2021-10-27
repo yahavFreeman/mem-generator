@@ -114,3 +114,22 @@ function switchLine(){
         gScrollLine=0
     }
 }
+
+function search(word,imgs){
+    imgs.forEach(img=>{
+        img.style.display='block'
+        if(!img.classList.contains(word)){
+            img.style.display='none'
+        }
+    })
+}
+
+function resetWords(words){
+    var elContainer=document.querySelector(".search-words")
+    words.forEach(word => {
+        var randSize=Math.floor(Math.random()*60+10)
+        console.log(randSize)
+        elContainer.innerHTML+=`<span onclick="upSearchFont(event,this)" style="font-size:${randSize}px;">${word.value}\t</span>`
+    });
+    elContainer.innerHTML+="<button class='read-btn' onclick='showText()'>read more</button>"
+}

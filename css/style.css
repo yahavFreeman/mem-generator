@@ -46,19 +46,51 @@ body {
 .search-bar-container {
   margin: 20px 10px 10px 21px;
 }
+
 .search-bar {
-  width: 100%;
+  width: 20%;
   border-radius: 3em;
   font-size: 1rem;
 }
 
-.main-canvas {
-  height: 300px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+.search-words{
+    position: relative;
+    color: white;
+    background-color:#ff9826 ;
+    user-select: none;
+    height: 80px;
+  /* text-overflow: ellipsis; */
+  width: 80%;
+  overflow: hidden;
 }
 
+.read-btn{
+    background-color: transparent;
+    border:none;
+    position: absolute;
+    bottom: 0;
+    right: 30px;
+}
+
+.search-words>*:hover{
+cursor: pointer;
+}
+/* main gallery and editor */
+.main-canvas {
+  display: none;
+}
+
+body.meme-now .main-canvas{
+    display: block;
+    display: flex;
+    height: 400px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto; 
+}
+body.meme-now .image-gallery{
+    display: none;
+}
 .meme-input {
   height: 20px;
 }

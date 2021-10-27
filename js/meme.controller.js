@@ -6,9 +6,11 @@ var gCurrImg
 function init() {
   gElCanvas = document.getElementById('my-canvas');
   gCtx = gElCanvas.getContext('2d');
+  resetWords(document.querySelectorAll('option'))
 }
 
 function onDraw(img){
+    toggleMeme()
     reset()
     gCurrImg=img
     displayMeme()
@@ -60,8 +62,35 @@ function toggleMenu() {
     document.body.classList.toggle('menu-open');
 }
 
+function toggleMeme(){
+    document.body.classList.toggle('meme-now');
+}
+
 function onNav(whereTo){
     if (document.body.classList.contains('menu-open'))
     toggleMenu()
 }
 
+function onSearch(word,e=true){
+    if(e.key==='Enter'){
+    var elImgs=document.querySelectorAll('.gallery-image')
+        search(word.value,elImgs)
+        var elSearchBar=document.querySelector(".search-bar")
+        elSearchBar.value=""
+    }
+}
+
+function upSearchFont(e,word){
+    event.preventDefault()
+   var num= word.style.fontSize.split("p")
+    num=+num[0]
+    num+=5
+    word.style.fontSize=num+"px"
+    console.log(num)
+}
+
+function showText(){
+    var elWords=document.querySelector(".search-words")
+    elWords.style.overflow="visible";
+    elWords.style.height="100%";
+}

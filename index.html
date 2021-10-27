@@ -20,8 +20,17 @@
         </ul>
         <button class="btn-menu" onclick="toggleMenu()">☰</button>
     </header>
-    <div class="search-bar-container">
-        <input class="search-bar" type="text" placeholder="Search">
+    <div class="search-bar-container flex">
+        <input list="tags" class="search-bar" type="text" placeholder="Search" onkeyup="onSearch(this,event)">
+        <div class="search-words">
+    
+        </div>
+    <datalist id="tags">
+        <option value="happy">happy</option>
+        <option value="funny">funny</option>
+        <option value="hypocrit">hypocrit</option>
+        <option value="brothers">brothers</option>
+    </datalist>
     </div>
     <main class="main-content">
         <div class="main-canvas center flex">
@@ -35,11 +44,12 @@
              <button class="line-height" onclick="onHeight(-5)">line height -</button>
              <button class="line-height" onclick="onAddLine()">new line</button>
              <button class="line-height" onclick="onSwitchLine()">switch line</button>
+             <button class="line-height" onclick="toggleMeme()">back to gallery</button>
             </div>
         </div>
         <div class="image-gallery gallery-grid center">
-            <img id="1" src="img/1.jpg" onclick="onDraw(this)">
-            <img id="2" src="img/2.jpg" onclick="onDraw(this)">
+            <img class="gallery-image funny happy hypocrit" id="1" src="img/1.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="2" src="img/2.jpg" onclick="onDraw(this)">
         </div>
     </main>
 
