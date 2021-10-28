@@ -1,7 +1,4 @@
 /* helpers */
-*{
-    /* box-sizing: border-box; */
-}
 html {
   font-family: Roboto;
 }
@@ -62,6 +59,11 @@ body {
   border-radius: 3em;
   margin-inline-end: 20px;
   font-size: 1rem;
+}
+
+.file-input{
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .input-btns > * {
@@ -161,6 +163,10 @@ body.meme-now .image-gallery {
 }
 .emojis {
   justify-content: center;
+}
+
+.stickers-container{
+    text-align: center;
 }
 
 .stickers-container > img {

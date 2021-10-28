@@ -51,22 +51,21 @@
                                 src="https://img.icons8.com/material-rounded/24/000000/decrease-font.png" /></button>
                         <button class="line-height" onclick="onHeight(-5)">⬆</button>
                         <button class="line-height" onclick="onHeight(5)">⬇</button>
-                    </div>
-                    <div class="input-btns second-input-btns-container">
                         <button class="add-line" onclick="onAddLine()">+</button>
                         <button class="switch-lines" onclick="onSwitchLine()">⇅</button>
                         <button class="remove-line" onclick="onDelLine()">🗑</button>
                         <button class="btn" onclick="uploadImg()"><img
-                                src="https://img.icons8.com/ios/20/000000/share--v1.png" /></button>
+                                src="https://img.icons8.com/ios/20/000000/share--v1.png" />
+                        </button>
                     </div>
-                    <div class="input-btns third-input-btns-container">
+                    <div class="input-btns second-input-btns-container">
                         <a href="#" class="download-link" onclick="downloadImg(this)" download="my-img.jpg"><img
                                 src="https://img.icons8.com/ios/20/000000/download--v1.png" /></a>
+                                <button class="save-btn" onclick="onSave()"><img
+                                        src="https://img.icons8.com/ios/20/000000/save.png" /></button>
+                                <button class="align-line-left" onclick="onAlign('right')"><img
+                                        src="https://img.icons8.com/ios/20/000000/align-cell-content-left.png" /></button>
                         </button>
-                        <button class="save-btn" onclick="onSave()"><img
-                                src="https://img.icons8.com/ios/20/000000/save.png" /></button>
-                        <button class="align-line-left" onclick="onAlign('right')"><img
-                                src="https://img.icons8.com/ios/20/000000/align-cell-content-left.png" /></button>
                         <button class="align-line-right" onclick="onAlign('left')"><img
                                 src="https://img.icons8.com/ios/20/000000/align-cell-content-right.png" /></button>
                         <button class="align-line-center" onclick="onAlign('center')"><img
@@ -74,19 +73,27 @@
                         <input type="color" value=#ff9826 onchange="onColorChange(this.value)">
                         <button>
                     </div>
+                    <div class="input-btns third-input-btns-container center">
+                        <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" style="font-size: 1rem;" />
+                    </div>
                 </div>
                 <div class="emojis-container">
                     <p class="emojis flex">
                         <span onclick="onAddEmoji(this)">😎</span><span onclick="onAddEmoji(this)">😁</span>
-                        <span onclick="onAddEmoji(this)">😃</span><span onclick="onAddEmoji(this)">😂</span>
+                        <span onclick="onAddEmoji(this)">😂</span><span onclick="onAddEmoji(this)">😘</span>
                         <span onclick="onAddEmoji(this)">🤣</span><span onclick="onAddEmoji(this)">😍</span>
                         <span onclick="onAddEmoji(this)">😫</span><span onclick="onAddEmoji(this)">🤕</span>
-                        <span onclick="onAddEmoji(this)">😮</span><span onclick="onAddEmoji(this)">😎</span>
-                        <span onclick="onAddEmoji(this)">😘</span>
+                        <span onclick="onAddEmoji(this)">😮</span>
+
                     </p>
                 </div>
                 <div class="stickers-container">
                     <img id="glasses" src="img/glasses.png" onclick="onAddSticker(this.id)">
+                    <img id="hat" src="/img/thug-life-meme-transparent-background-409868.png"
+                        onclick="onAddSticker(this.id)">
+                    <img id="sad-frog" src="img/pngaaa.com-1725625.png" onclick="onAddSticker(this.id)">
+                    <img id="face" src="/img/derp.png" onclick="onAddSticker(this.id)">
+                    <img id="dog" src="/img/dogge.png" onclick="onAddSticker(this.id)">
                 </div>
                 <p class="user-msg"></p>
                 <div class="share-container"></div>

@@ -36,8 +36,8 @@ function isLineClicked(clickedPos) {
         var up=pos.height-pos.size
         var down=pos.height+pos.size/2
         if(pos.isSticker){
-            up=pos.height+pos.size*0.3
-            down=pos.height+(pos.size*0.75)  
+            up=pos.height+pos.size*0.15
+            down=pos.height+(pos.size*0.9)  
         }
         console.log(up,down)
         if ((clickedPos.y >= up) && (down>=clickedPos.y)){

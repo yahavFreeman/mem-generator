@@ -35,5 +35,41 @@ function doUploadImg(imgDataUrl, onSuccess) {
 }
 
 
+function downloadImg(elLink) {
+    var imgContent = gElCanvas.toDataURL('image/jpeg')
+    elLink.href = imgContent
+}
+
+
+// The next 2 functions handle IMAGE UPLOADING to img tag from file system: 
+function onImgInput(ev) {
+    loadImageFromInput(ev, renderImg)
+}
+
+function loadImageFromInput(ev, onImageReady) {
+    document.querySelector('.share-container').innerHTML = ''
+    var reader = new FileReader()
+
+    reader.onload = function (event) {
+        var img = new Image()
+        img.onload = onImageReady.bind(null, img)
+        img.src = event.target.result
+        gImg = img
+    }
+    reader.readAsDataURL(ev.target.files[0])
+}
+
+
+function renderImg(img) {
+    // toggleMeme()
+    reset()
+    gCurrImg=img
+    displayMeme()
+    clearInput()
+    // gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
+}
+
+
+
 
 
