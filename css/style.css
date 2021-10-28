@@ -18,6 +18,7 @@ body {
 .clean-list {
   list-style: none;
 }
+
 /* nav bar */
 .main-nav {
   display: none;
@@ -37,6 +38,11 @@ body {
   width: 152px;
   margin: 9px 0px 9px 20px;
 }
+
+.logo:hover {
+  cursor: pointer;
+}
+
 .main-header {
   width: 100%;
   background-color: #fff;
@@ -48,31 +54,44 @@ body {
 }
 
 .search-bar {
-    height: 2.625rem;
+  height: 2.625rem;
   flex-basis: 50%;
   border-radius: 3em;
   margin-inline-end: 20px;
   font-size: 1rem;
-  
 }
 
-.input-btns>*{
-    height: 40px;
-    font-size: 1.5rem;
-    background-color:transparent;
-    border:none
+.input-btns > * {
+  height: 40px;
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+  color: black;
+}
+.download-link {
+  text-decoration: none;
+  color: black;
+}
+.input-btns > *:hover {
+  cursor: pointer;
+}
+.user-input {
+  display: none;
+}
+.user-msg {
+  display: none;
+}
+.input-btns {
+  display: flex;
+  justify-content: center;
 }
 
-.input-btns{
-display: flex;
-justify-content: center;
-}
-
-.search-words{
-    position: relative;
-    color: white;
-    background-color:#ff9826 ;
-    user-select: none;
+.search-words {
+  position: relative;
+  color: white;
+  background-color: #ff9826;
+  user-select: none;
   flex-basis: 50%;
   height: 80px;
   /* text-overflow: ellipsis; */
@@ -80,43 +99,44 @@ justify-content: center;
   margin-inline-start: 20px;
 }
 
-.search-words.read-more{
-    overflow: visible;
-    height: 100%;
+.search-words.read-more {
+  overflow: visible;
+  height: 100%;
 }
 
-.read-btn{
-    background-color: transparent;
-    border:none;
-    position: absolute;
-    bottom: 0;
-    right: 30px;
+.read-btn {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  bottom: 0;
+  right: 30px;
 }
 
-.search-words>*:hover{
-cursor: pointer;
+.search-words > *:hover {
+  cursor: pointer;
 }
+
 /* main gallery and editor */
 .main-canvas {
   display: none;
 }
 
-body.meme-now .main-canvas{
-    display: block;
-    display: flex;
-    height: 400px;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto; 
+body.meme-now .main-canvas {
+  display: block;
+  display: flex;
+  height: 400px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
-body.meme-now .image-gallery{
-    display: none;
+body.meme-now .image-gallery {
+  display: none;
 }
 .meme-input {
   height: 20px;
 }
 .user-input {
-    display: flex;
+  display: flex;
   flex-direction: column;
   /* flex-basis: 20%; */
   margin-inline-start: 100px;
@@ -126,6 +146,49 @@ body.meme-now .image-gallery{
 .image-gallery > * {
   width: 100%;
   object-fit: cover;
+}
+
+.image-gallery > *:hover {
+  cursor: pointer;
+}
+
+/* stickers and emojis */
+.emojis > *:hover {
+  cursor: pointer;
+}
+.emojis {
+  justify-content: center;
+}
+
+.stickers-container > img {
+  height: 40px;
+  width: 40px;
+}
+.stickers-container > img:hover {
+  cursor: pointer;
+}
+/* showing a gallery for the saved memes */
+.saved-memes-container {
+  display: none;
+}
+
+body.saved-memes-only .saved-memes-container {
+  display: block;
+}
+.saved-memes-container > * {
+  width: 100%;
+  object-fit: cover;
+}
+
+.saved-memes-container > *:hover {
+  cursor: pointer;
+}
+
+body.saved-memes-only .image-gallery {
+  display: none;
+}
+body.menu-open .search-words {
+  display: none;
 }
 
 /* nav bar hamburger */
@@ -152,18 +215,15 @@ body.meme-now .image-gallery{
     color: #ffffff;
     font-size: 1.5rem;
     line-height: 28.13px;
-    padding-bottom: 70px;
-    padding-top: 70px;
+    margin: 70px 0;
     width: 100%;
   }
 
   body.menu-open .main-nav > li:nth-child(2) {
-    padding-top: 197px;
-    padding-bottom: 69px;
+    margin: 197px 0 69px 0;
   }
   body.menu-open .main-nav > li:nth-child(3) {
-    padding-top: 69px;
-    padding-bottom: 70px;
+    margin: 69px 0 70px 0;
   }
   body.menu-open .main-nav {
     margin: 0;
@@ -179,10 +239,6 @@ body.meme-now .image-gallery{
   }
 }
 
-.card-txt {
-  flex-direction: column;
-}
-
 /* resposivness */
 @media (min-width: 375px) {
   .image-gallery {
@@ -190,6 +246,13 @@ body.meme-now .image-gallery{
     margin-right: 10px;
   }
   .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+
+  body.saved-memes-only .saved-memes-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
@@ -236,6 +299,15 @@ body.meme-now .image-gallery{
     margin-right: 25px;
   }
   .gallery-grid {
+    display: grid;
+    margin-left: 30px;
+    margin-right: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 25px;
+  }
+
+  body.saved-memes-only .saved-memes-container {
     display: grid;
     margin-left: 30px;
     margin-right: 25px;

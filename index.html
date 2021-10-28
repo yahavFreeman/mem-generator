@@ -9,14 +9,14 @@
 </head>
 <body onload="init()">
     <header class="main-header flex space-between">
-        <img src="img/LOGO.png" class="logo">
+        <img src="img/LOGO.png" class="logo" onclick="ontoggleAll()">
         <ul class="main-nav flex clean-list">
             <button class="clse-menu" onclick="toggleMenu()">X</button>
-            <li onclick="onNav(this)">Meme</li>
+            <li onclick="onNav(this); onLoadMemes()">Meme</li>
             <hr>
-            <li onclick="onNav(this)">Gallery</li>
+            <li onclick="onNav(this);ontoggleAll()">Gallery</li>
             <hr>
-            <li onclick="onNav(this)" class="last">About</li>
+            <li onclick="onNav(this); ontoggleAll()" class="last">About</li>
         </ul>
         <button class="btn-menu" onclick="toggleMenu()">☰</button>
     </header>
@@ -39,26 +39,75 @@
             <div class="user-input flex">
              <input class="meme-input" type="text" placeholder="I never eat Falafel" onkeyup="onChangeText(this)" >
              <div class="input-btns">
-                 <button class="size-change" onclick="onFont(5)">⬆</button>
-                 <button class="size-change" onclick="onFont(-5)">⬇</button>
-                 <button class="line-height" onclick="onHeight(5)">lower</button>
-                 <button class="line-height" onclick="onHeight(-5)">higher</button>
-                 <button class="line-height" onclick="onAddLine()">+</button>
-                 <button class="line-height" onclick="onSwitchLine()">⇅</button>
-                 <button class="line-height" onclick="onDelLine()">🗑</button>
-             </div>
+                 <button class="size-change" onclick="onFont(5)"><img src="https://img.icons8.com/material-outlined/24/000000/increase-font.png"/></button>
+                 <button class="size-change" onclick="onFont(-5)"><img src="https://img.icons8.com/material-rounded/24/000000/decrease-font.png"/></button>
+                 <button class="line-height" onclick="onHeight(-5)">⬆</button>
+                 <button class="line-height" onclick="onHeight(5)">⬇</button>
+                 <button class="add-line" onclick="onAddLine()">+</button>
+                 <button class="switch-lines" onclick="onSwitchLine()">⇅</button>
+                 <button class="remove-line" onclick="onDelLine()">🗑</button>
+                 <button class="btn" onclick="uploadImg()"><img src="https://img.icons8.com/ios/20/000000/share--v1.png"/></button>
+                 <button>
+                     <a href="#" class="download-link" onclick="downloadImg(this)" download="my-img.jpg"><img src="https://img.icons8.com/ios/20/000000/download--v1.png"/></a>
+                 </button>
+                 <button class="save-btn" onclick="onSave()"><img src="https://img.icons8.com/ios/20/000000/save.png"/></button>
+                 <button class="align-line-left" onclick="onAlign('right')"><img src="https://img.icons8.com/ios/20/000000/align-cell-content-left.png"/></button>
+                 <button class="align-line-right" onclick="onAlign('left')"><img src="https://img.icons8.com/ios/20/000000/align-cell-content-right.png"/></button>
+                 <button class="align-line-center" onclick="onAlign('center')"><img src="https://img.icons8.com/ios/20/000000/align-cell-content-center.png"/></button>
+                 <input type="color" value=#ff9826 onchange="onColorChange(this.value)">
+                </div>
+                <div class="emojis-container">
+                    <p class="emojis flex">
+                        <span onclick="onAddEmoji(this)">😎</span><span onclick="onAddEmoji(this)">😁</span>
+                        <span onclick="onAddEmoji(this)">😃</span><span onclick="onAddEmoji(this)">😂</span>
+                        <span onclick="onAddEmoji(this)">🤣</span><span onclick="onAddEmoji(this)">😍</span>
+                        <span onclick="onAddEmoji(this)">😫</span><span onclick="onAddEmoji(this)">🤕</span>
+                        <span onclick="onAddEmoji(this)">😮</span><span onclick="onAddEmoji(this)">😎</span>
+                        <span onclick="onAddEmoji(this)">😘</span>
+                    </p>
+                </div>
+                <div class="stickers-container">
+                    <img id="glasses" src="img/glasses.png" onclick="onAddSticker(this.id)">
+                </div>
+                <p class="user-msg"></p>
+   <div class="share-container"></div>
              <button class="line-height" onclick="toggleMeme()">back to gallery</button>
             </div>
         </div>
         <div class="image-gallery gallery-grid center">
             <img class="gallery-image funny happy hypocrit" id="1" src="img/1.jpg" onclick="onDraw(this)">
             <img class="gallery-image happy brothers" id="2" src="img/2.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="3" src="img/3.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="4" src="img/4.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="5" src="img/5.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="6" src="img/6.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="7" src="img/7.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="8" src="img/8.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="9" src="img/9.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="10" src="img/10.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="11" src="img/11.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="12" src="img/12.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="13" src="img/13.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="14" src="img/14.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="15" src="img/15.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="16" src="img/16.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="17" src="img/17.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="18" src="img/18.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="19" src="img/19.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="20" src="img/20.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="21" src="img/21.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="22" src="img/22.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="23" src="img/23.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="24" src="img/24.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers" id="25" src="img/25.jpg" onclick="onDraw(this)">
+        <div class="saved-memes-container">
+
         </div>
     </main>
 
     <script src="js/service/storage.service.js"></script>
     <script src="js/service/meme.service.js"></script>
-    <script src="js/service/upload.service.js"></script>
+    <script src="js/service/upload-service.js"></script>
     <script src="js/meme.controller.js"></script>
 </body>
 </html>

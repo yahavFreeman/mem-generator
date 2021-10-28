@@ -17,6 +17,12 @@ function onDraw(img){
     clearInput()
 }
 
+function hide(that){
+    var elHide=document.querySelector(".user-msg")
+    elHide.style.display="none"
+    that.style.display="none"
+}
+
 function onChangeText(input){
     var inputValue=input.value
     changeText(inputValue)
@@ -41,8 +47,6 @@ if (!meme.length){
 addText(meme)
 var elUserInput=document.querySelector(".user-input")
 elUserInput.style.display='flex'
-
-
 }
 
 function onFont(num){
@@ -71,7 +75,11 @@ if(!meme.length) return
     switchLine()
     displayMeme()
     clearInput()
-    resetGLine()
+}
+
+function downloadImg(elLink) {
+    var imgContent = gElCanvas.toDataURL('image/jpeg')
+    elLink.href = imgContent
 }
 
 function toggleMenu() {
@@ -122,4 +130,62 @@ function showText(){
         elBtn.innerHTML="show more"
 
     }
+}
+
+function onAddEmoji(emoji){
+    var inputValue=emoji.innerText
+    addLine()
+    changeText(inputValue)
+    displayMeme()
+}
+
+function onAddSticker(id){
+    addSticker(id)
+    gCurrImg=gElCanvas
+    displayMeme()
+}
+const KEY='memesDB'
+const CLASS_KEY='classDB'
+
+function onSave(){
+    var imgAsDataURL=loadFromStorage(KEY)
+    if(!imgAsDataURL) var imgAsDataURL=[]
+    var img=gElCanvas.toDataURL("image/png")
+    imgAsDataURL.push(img);
+    saveToStorage(KEY,imgAsDataURL)
+}
+
+var i=0
+function onLoadMemes(){
+    var imgs=loadFromStorage(KEY)
+    if(!document.body.classList.contains("saved-memes-only")) toggleSaved()
+    if (document.body.classList.contains('meme-now')) toggleMeme()
+    if (imgs){
+    var elSavedImgs=document.querySelector(".saved-memes-container")
+    for(i;i<imgs.length;i++)
+    {
+        elSavedImgs.innerHTML+=`<img src="${imgs[i]}" onclick="onDraw(this)">`
+    }
+}
+}
+
+function ontoggleAll(){
+    if(document.body.classList.contains("saved-memes-only")) toggleSaved()
+    if (document.body.classList.contains('meme-now')) toggleMeme()
+    if (document.body.classList.contains('menu-open')) toggleMenu()
+}
+
+function toggleSaved(){
+    document.body.classList.toggle("saved-memes-only")
+    
+}
+
+function onAlign(direction){
+    align(direction)
+    displayMeme()
+}
+
+function onColorChange(newColor){
+    changeColor(newColor)
+    displayMeme()
 }

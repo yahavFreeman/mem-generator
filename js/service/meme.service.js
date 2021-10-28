@@ -16,9 +16,17 @@ var gMeme = {
 }
 
 function draw(img){
+    gElCanvas.height=(img.height*gElCanvas.width)/img.width
     var memeImg = img
+    console.log(img.width)
     gCtx.drawImage(memeImg,0,0,gElCanvas.width,gElCanvas.height)
 }
+
+function addSticker(id){
+    var elStickerImg=document.querySelector(`#${id}`)
+    gCtx.drawImage(elStickerImg,20,20,gElCanvas.width/2,gElCanvas.height/2)
+}
+
 function reset(){
      gMeme = { 
         selectedImgId: 1, 
@@ -84,6 +92,13 @@ function changeText(value){
     return gMeme.lines
 }
 
+function align(direction){
+    gMeme.lines[gline].align=direction
+}
+function changeColor(newColor){
+    gMeme.lines[gline].color=newColor
+}
+
 function delLine(){
     gMeme.lines.splice(gline,1)
     gline-=1
@@ -94,7 +109,6 @@ function changeFont(num){
 }
 
 function changeHeight(num){
-    console.log(gline)
     gMeme.lines[gline].height+=num
 }
 
@@ -120,10 +134,7 @@ if(gline===1){
 function switchLine(){
     gline=gScrollLine
     gScrollLine+=1
-    console.log(gScrollLine)
-    console.log(gMeme.lines.length)
     if(gScrollLine>gMeme.lines.length){
-        console.log('in')
         gScrollLine=0
         gline=0
     }
