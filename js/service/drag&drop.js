@@ -5,7 +5,7 @@ function addListeners() {
     addTouchListeners()
     window.addEventListener('resize', () => {
         resizeCanvas()
-        renderCanvas()
+        displayMeme()
     })
 }
 
@@ -23,26 +23,29 @@ function addTouchListeners() {
 
 function onDown(ev) {
     const pos = getEvPos(ev)
-    if (!isLineClicked(pos)) {
-        console.log('in')
-        return
-    }
+    if (isLineClicked(pos)) {
     setLineDrag(true)
     gStartPos = pos
     document.body.style.cursor = 'grabbing'
+    }
 }
 
 function isLineClicked(clickedPos) {
     var memepos=getMeme()
     var isLine=memepos.filter((pos,indx)=>{
-        console.log(clickedPos.y,pos.height+pos.size/2,clickedPos.y,pos.height-pos.size/2)
-        if (clickedPos.y>= pos.height-pos.size/2 && clickedPos.y<=pos.height+pos.size/2){
+        var up=pos.height-pos.size
+        var down=pos.height+pos.size/2
+        if(pos.isSticker){
+            up=pos.height+pos.size*0.3
+            down=pos.height+(pos.size*0.75)  
+        }
+        console.log(up,down)
+        if ((clickedPos.y >= up) && (down>=clickedPos.y)){
         setGline(indx)
         return true
         }
     })
-    console.log(isLine)
-    return isLine
+    return isLine.length
 }
 
 function onMove(ev) {
@@ -66,14 +69,14 @@ function moveLine(dx, dy) {
 
 function onUp() {
     setLineDrag(false)
-    document.body.style.cursor = 'grab'
+    document.body.style.cursor = 'inherit'
 }
 
-// function resizeCanvas() {
-//     const elContainer = document.querySelector('.canvas-container')
-//     gElCanvas.width = elContainer.offsetWidth
-//     gElCanvas.height = elContainer.offsetHeight
-// }
+function resizeCanvas() {
+    const elContainer = document.querySelector('.main-canvas')
+    gElCanvas.width = elContainer.offsetWidth/2
+    gElCanvas.height = elContainer.offsetHeight/2
+}
 
 function getEvPos(ev) {
     var pos = {

@@ -1,4 +1,7 @@
 /* helpers */
+*{
+    /* box-sizing: border-box; */
+}
 html {
   font-family: Roboto;
 }
@@ -94,7 +97,6 @@ body {
   user-select: none;
   flex-basis: 50%;
   height: 80px;
-  /* text-overflow: ellipsis; */
   overflow: hidden;
   margin-inline-start: 20px;
 }
@@ -122,10 +124,10 @@ body {
 }
 
 body.meme-now .main-canvas {
+    flex-basis: 50%;
   display: block;
   display: flex;
-  /* height: 400px;
-  width: 100%; */
+  /* flex-direction: column; */
   margin-left: auto;
   margin-right: auto;
 }
@@ -138,8 +140,9 @@ body.meme-now .image-gallery {
 .user-input {
   display: flex;
   flex-direction: column;
-  /* flex-basis: 20%; */
+  max-width: 300px;
   margin-inline-start: 100px;
+  margin-inline-end: 20px;
   justify-content: center;
 }
 
@@ -173,7 +176,7 @@ body.meme-now .image-gallery {
 }
 
 body.saved-memes-only .saved-memes-container {
-  display: block;
+  display: grid;
 }
 .saved-memes-container > * {
   width: 100%;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <title>meme generator</title>
 </head>
+
 <body onload="init()">
     <header class="main-header flex space-between">
         <img src="img/LOGO.png" class="logo" onclick="ontoggleAll()">
@@ -23,38 +25,55 @@
     <div class="search-bar-container flex">
         <input list="tags" class="search-bar" type="text" placeholder="Search" onkeyup="onSearch(this,event)">
         <div class="search-words">
-    
+
         </div>
-    <datalist id="tags">
-        <option value="happy">happy</option>
-        <option value="funny">funny</option>
-        <option value="hypocrit">hypocrit</option>
-        <option value="brothers">brothers</option>
-    </datalist>
+        <datalist id="tags">
+            <option value="happy">happy</option>
+            <option value="funny">funny</option>
+            <option value="hypocrit">hypocrit</option>
+            <option value="brothers">brothers</option>
+            <option value="animal">animal</option>
+            <option value="inspire">inspire</option>
+            <option value="shocking">shocking</option>
+        </datalist>
     </div>
     <main class="main-content">
         <div class="main-canvas center flex">
-            <canvas id="my-canvas" height="800" width="800">
+            <canvas id="my-canvas" height="600" width="600">
             </canvas>
             <div class="user-input flex">
-             <input class="meme-input" type="text" placeholder="I never eat Falafel" onkeyup="onChangeText(this)" >
-             <div class="input-btns">
-                 <button class="size-change" onclick="onFont(5)"><img src="https://img.icons8.com/material-outlined/24/000000/increase-font.png"/></button>
-                 <button class="size-change" onclick="onFont(-5)"><img src="https://img.icons8.com/material-rounded/24/000000/decrease-font.png"/></button>
-                 <button class="line-height" onclick="onHeight(-5)">⬆</button>
-                 <button class="line-height" onclick="onHeight(5)">⬇</button>
-                 <button class="add-line" onclick="onAddLine()">+</button>
-                 <button class="switch-lines" onclick="onSwitchLine()">⇅</button>
-                 <button class="remove-line" onclick="onDelLine()">🗑</button>
-                 <button class="btn" onclick="uploadImg()"><img src="https://img.icons8.com/ios/20/000000/share--v1.png"/></button>
-                 <button>
-                     <a href="#" class="download-link" onclick="downloadImg(this)" download="my-img.jpg"><img src="https://img.icons8.com/ios/20/000000/download--v1.png"/></a>
-                 </button>
-                 <button class="save-btn" onclick="onSave()"><img src="https://img.icons8.com/ios/20/000000/save.png"/></button>
-                 <button class="align-line-left" onclick="onAlign('right')"><img src="https://img.icons8.com/ios/20/000000/align-cell-content-left.png"/></button>
-                 <button class="align-line-right" onclick="onAlign('left')"><img src="https://img.icons8.com/ios/20/000000/align-cell-content-right.png"/></button>
-                 <button class="align-line-center" onclick="onAlign('center')"><img src="https://img.icons8.com/ios/20/000000/align-cell-content-center.png"/></button>
-                 <input type="color" value=#ff9826 onchange="onColorChange(this.value)">
+                <input class="meme-input" type="text" placeholder="I never eat Falafel" onkeyup="onChangeText(this)">
+                <div class="input-btns-container">
+                    <div class="input-btns first-input-btns-container">
+                        <button class="size-change" onclick="onFont(5)"><img
+                                src="https://img.icons8.com/material-outlined/24/000000/increase-font.png" /></button>
+                        <button class="size-change" onclick="onFont(-5)"><img
+                                src="https://img.icons8.com/material-rounded/24/000000/decrease-font.png" /></button>
+                        <button class="line-height" onclick="onHeight(-5)">⬆</button>
+                        <button class="line-height" onclick="onHeight(5)">⬇</button>
+                    </div>
+                    <div class="input-btns second-input-btns-container">
+                        <button class="add-line" onclick="onAddLine()">+</button>
+                        <button class="switch-lines" onclick="onSwitchLine()">⇅</button>
+                        <button class="remove-line" onclick="onDelLine()">🗑</button>
+                        <button class="btn" onclick="uploadImg()"><img
+                                src="https://img.icons8.com/ios/20/000000/share--v1.png" /></button>
+                    </div>
+                    <div class="input-btns third-input-btns-container">
+                        <a href="#" class="download-link" onclick="downloadImg(this)" download="my-img.jpg"><img
+                                src="https://img.icons8.com/ios/20/000000/download--v1.png" /></a>
+                        </button>
+                        <button class="save-btn" onclick="onSave()"><img
+                                src="https://img.icons8.com/ios/20/000000/save.png" /></button>
+                        <button class="align-line-left" onclick="onAlign('right')"><img
+                                src="https://img.icons8.com/ios/20/000000/align-cell-content-left.png" /></button>
+                        <button class="align-line-right" onclick="onAlign('left')"><img
+                                src="https://img.icons8.com/ios/20/000000/align-cell-content-right.png" /></button>
+                        <button class="align-line-center" onclick="onAlign('center')"><img
+                                src="https://img.icons8.com/ios/20/000000/align-cell-content-center.png" /></button>
+                        <input type="color" value=#ff9826 onchange="onColorChange(this.value)">
+                        <button>
+                    </div>
                 </div>
                 <div class="emojis-container">
                     <p class="emojis flex">
@@ -70,38 +89,38 @@
                     <img id="glasses" src="img/glasses.png" onclick="onAddSticker(this.id)">
                 </div>
                 <p class="user-msg"></p>
-   <div class="share-container"></div>
-             <button class="line-height" onclick="toggleMeme()">back to gallery</button>
+                <div class="share-container"></div>
+                <button class="back" onclick="toggleMeme()">back to gallery</button>
             </div>
         </div>
         <div class="image-gallery gallery-grid center">
-            <img class="gallery-image funny happy hypocrit" id="1" src="img/1.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="2" src="img/2.jpg" onclick="onDraw(this)">
+            <img class="gallery-image funny happy" id="1" src="img/1.jpg" onclick="onDraw(this)">
+            <img class="gallery-image hypocrit" id="2" src="img/2.jpg" onclick="onDraw(this)">
             <img class="gallery-image happy brothers" id="3" src="img/3.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="4" src="img/4.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="5" src="img/5.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="6" src="img/6.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="7" src="img/7.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="8" src="img/8.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="9" src="img/9.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="10" src="img/10.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="11" src="img/11.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="12" src="img/12.jpg" onclick="onDraw(this)">
+            <img class="gallery-image inspire hypocrit" id="4" src="img/4.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy brothers animal" id="5" src="img/5.jpg" onclick="onDraw(this)">
+            <img class="gallery-image animal" id="6" src="img/6.jpg" onclick="onDraw(this)">
+            <img class="gallery-image hypocrit" id="7" src="img/7.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy" id="8" src="img/8.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy" id="9" src="img/9.jpg" onclick="onDraw(this)">
+            <img class="gallery-image hypocrit funny shocking" id="10" src="img/10.jpg" onclick="onDraw(this)">
+            <img class="gallery-image funny shocking" id="11" src="img/11.jpg" onclick="onDraw(this)">
+            <img class="gallery-image hypocrit" id="12" src="img/12.jpg" onclick="onDraw(this)">
             <img class="gallery-image happy brothers" id="13" src="img/13.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="14" src="img/14.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="15" src="img/15.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="16" src="img/16.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="17" src="img/17.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="18" src="img/18.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="19" src="img/19.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="20" src="img/20.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="21" src="img/21.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="22" src="img/22.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="23" src="img/23.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="24" src="img/24.jpg" onclick="onDraw(this)">
-            <img class="gallery-image happy brothers" id="25" src="img/25.jpg" onclick="onDraw(this)">
+            <img class="gallery-image funny" id="14" src="img/14.jpg" onclick="onDraw(this)">
+            <img class="gallery-image funny" id="15" src="img/15.jpg" onclick="onDraw(this)">
+            <img class="gallery-image funny animal" id="16" src="img/16.jpg" onclick="onDraw(this)">
+            <img class="gallery-image funny hypocrit" id="17" src="img/17.jpg" onclick="onDraw(this)">
+            <img class="gallery-image shocking funny" id="18" src="img/18.jpg" onclick="onDraw(this)">
+            <img class="gallery-image inspire funny" id="19" src="img/19.jpg" onclick="onDraw(this)">
+            <img class="gallery-image shocking inspire" id="20" src="img/20.jpg" onclick="onDraw(this)">
+            <img class="gallery-image funny hypocrit inspire" id="21" src="img/21.jpg" onclick="onDraw(this)">
+            <img class="gallery-image funny hypocrit" id="22" src="img/22.jpg" onclick="onDraw(this)">
+            <img class="gallery-image happy funny hypocrit" id="23" src="img/23.jpg" onclick="onDraw(this)">
+            <img class="gallery-image shocking hypocrit" id="24" src="img/24.jpg" onclick="onDraw(this)">
+            <img class="gallery-image shocking hypocrit funny brothers" id="25" src="img/25.jpg" onclick="onDraw(this)">
+        </div>
         <div class="saved-memes-container">
-
         </div>
     </main>
 
@@ -111,4 +130,5 @@
     <script src="js/service/drag&drop.js"></script>
     <script src="js/meme.controller.js"></script>
 </body>
+
 </html>

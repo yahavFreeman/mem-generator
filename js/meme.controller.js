@@ -163,6 +163,7 @@ function onLoadMemes(){
     var elSavedImgs=document.querySelector(".saved-memes-container")
     for(i;i<imgs.length;i++)
     {
+        console.log(imgs[i])
         elSavedImgs.innerHTML+=`<img src="${imgs[i]}" onclick="onDraw(this)">`
     }
 }
@@ -172,6 +173,10 @@ function ontoggleAll(){
     if(document.body.classList.contains("saved-memes-only")) toggleSaved()
     if (document.body.classList.contains('meme-now')) toggleMeme()
     if (document.body.classList.contains('menu-open')) toggleMenu()
+    var elImgs=document.querySelectorAll('.gallery-image')
+    elImgs.forEach(img => {
+        img.style.display='block'
+    });
 }
 
 function toggleSaved(){

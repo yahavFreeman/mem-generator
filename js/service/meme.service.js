@@ -13,7 +13,8 @@ var gMeme = {
     align: 'center', 
     color: 'white',
     height:100,
-    x:0
+    x:100,
+    isSticker:false
 } ] 
 }
 var gStickerCounter=0
@@ -36,6 +37,14 @@ function setGsticker(id){
     sticker.height=300
     sticker.x=300
     gStickers.push(sticker)
+    addLine()
+    if(gLine===1){
+        sticker.height=gElCanvas.height-100
+    }
+    gMeme.lines[gLine].isSticker=sticker
+    gMeme.lines[gLine].height=sticker.height
+    gMeme.lines[gLine].x=sticker.x
+    gMeme.lines[gLine].size=sticker.size
 }
 
 function addSticker(id){
@@ -62,9 +71,11 @@ function reset(){
         align: 'center', 
         color: 'white',
         height:100,
-        x:gElCanvas.width/2
+        x:gElCanvas.width/2,
+        isSticker:false
     }] 
     }
+    gStickers=[]
     gLine=0
     gStickerCounter=0
 
@@ -106,12 +117,15 @@ function setGline(indx){
 
 function addText(memeLines){
     memeLines.forEach(meme => {
-        gCtx.font=`${meme.size}px Impact`;
-        gCtx.textAlign = `${meme.align}`;
-        gCtx.fillStyle = `${meme.color}`;
-        gCtx.strokeStyle='black';
-        gCtx.fillText(`${meme.txt}`,`${meme.x}`,`${meme.height}`)
-        gCtx.strokeText(`${meme.txt}`,`${meme.x}`,`${meme.height}`) 
+        if(!meme.isSticker) {
+            gCtx.font=`${meme.size}px Impact`;
+            gCtx.textAlign = `${meme.align}`;
+            gCtx.fillStyle = `${meme.color}`;
+            gCtx.strokeStyle='black';
+            gCtx.fillText(`${meme.txt}`,`${meme.x}`,`${meme.height}`)
+            gCtx.strokeText(`${meme.txt}`,`${meme.x}`,`${meme.height}`) 
+        }
+
     });
 
 }
@@ -145,14 +159,17 @@ function delLine(){
 }
 
 function changeFont(num){
+    if(gMeme.lines[gLine].isSticker) gMeme.lines[gLine].isSticker.size+=num
     gMeme.lines[gLine].size+=num
 }
 
 function changeHeight(num){
+    if(gMeme.lines[gLine].isSticker) gMeme.lines[gLine].isSticker.height+=num
     gMeme.lines[gLine].height+=num
 }
 
 function changeXpos(num){
+    if(gMeme.lines[gLine].isSticker) gMeme.lines[gLine].isSticker.x+=num
     gMeme.lines[gLine].x+=num
 }
 
