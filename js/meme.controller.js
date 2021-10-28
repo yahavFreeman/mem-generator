@@ -11,6 +11,7 @@ function init() {
 }
 
 function onDraw(img){
+    _addCanvasListener()
     toggleMeme()
     reset()
     gCurrImg=img
@@ -192,4 +193,15 @@ function onAlign(direction){
 function onColorChange(newColor){
     changeColor(newColor)
     displayMeme()
+}
+
+function _addCanvasListener(){
+    var elCanvas=document.querySelector("#my-canvas")
+    elCanvas.addEventListener('keyup',onKey())
+}
+
+function onKey(key){
+    console.log('in')
+    // var elInput=document.querySelector(".meme-input")
+    // elInput.value=key
 }
