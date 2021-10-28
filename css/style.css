@@ -124,8 +124,8 @@ body {
 body.meme-now .main-canvas {
   display: block;
   display: flex;
-  height: 400px;
-  width: 100%;
+  /* height: 400px;
+  width: 100%; */
   margin-left: auto;
   margin-right: auto;
 }

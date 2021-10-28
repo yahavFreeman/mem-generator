@@ -7,6 +7,7 @@ function init() {
   gElCanvas = document.getElementById('my-canvas');
   gCtx = gElCanvas.getContext('2d');
   resetWords(document.querySelectorAll('option'))
+  addListeners()
 }
 
 function onDraw(img){
@@ -38,9 +39,7 @@ function onDelLine(){
 function displayMeme(){
     draw(gCurrImg)
     setMeme(gCurrImg.id)
-// var img=getImgInfo(gCurrImg.id)
 var meme=getMeme()
-// var num=getLine()
 if (!meme.length){
     return
 }
@@ -141,8 +140,8 @@ function onAddEmoji(emoji){
 
 function onAddSticker(id){
     addSticker(id)
-    gCurrImg=gElCanvas
-    displayMeme()
+    // gCurrImg=gElCanvas
+    // displayMeme()
 }
 const KEY='memesDB'
 const CLASS_KEY='classDB'
