@@ -130,6 +130,24 @@ function addText(memeLines){
 
 }
 
+
+function showBorder(){
+    if (gMeme.lines[gLine].isSticker){
+    drawRect(gMeme.lines[gLine].isSticker.x,gMeme.lines[gLine].isSticker.height+gMeme.lines[gLine].isSticker.size*0.15,gMeme.lines[gLine].isSticker.size,gMeme.lines[gLine].isSticker.size*0.7)
+        return
+    }
+    drawRect(10,gMeme.lines[gLine].height-gMeme.lines[gLine].size,gElCanvas.width-20,70)
+}
+
+  function drawRect(x,y,xEnd,yEnd) {
+    gCtx.beginPath();
+    gCtx.rect(x, y,xEnd,yEnd);
+    gCtx.strokeStyle = 'white';
+    gCtx.stroke();
+  }
+
+  
+
 function clearInput(){
     var elInput=document.querySelector(".meme-input")
     elInput.value=""

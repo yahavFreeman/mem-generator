@@ -8,14 +8,20 @@ function init() {
   gCtx = gElCanvas.getContext('2d');
   resetWords(document.querySelectorAll('option'))
   addListeners()
+  gElCanvas.addEventListener('keypress', function() {
+    var elInput=document.querySelector(".meme-input")
+    elInput.value+=event.key
+    onChangeText(elInput)
+ }, false);
 }
 
 function onDraw(img){
-    _addCanvasListener()
+    // _addCanvasListener()
     toggleMeme()
     reset()
     gCurrImg=img
     displayMeme()
+    showBorder()
     clearInput()
 }
 
@@ -29,12 +35,14 @@ function onChangeText(input){
     var inputValue=input.value
     changeText(inputValue)
     displayMeme()
+    showBorder()
 }
 
 function onDelLine(){
     delLine()
     displayMeme()
     clearInput()
+    showBorder()
 }
 
 function displayMeme(){
@@ -54,6 +62,8 @@ var meme=getMeme()
 if(!meme.length) return
     changeFont(num)
     displayMeme()
+    showBorder()
+
 }
 
 function onHeight(num){
@@ -61,12 +71,14 @@ function onHeight(num){
 if(!meme.length) return
 changeHeight(num)
 displayMeme()
+showBorder()
 }
 
 function onAddLine(){
     addLine()
     displayMeme()
     clearInput()
+    showBorder()
 }
 
 function onSwitchLine(){
@@ -75,6 +87,7 @@ if(!meme.length) return
     switchLine()
     displayMeme()
     clearInput()
+    showBorder()
 }
 
 function downloadImg(elLink) {
@@ -137,12 +150,14 @@ function onAddEmoji(emoji){
     addLine()
     changeText(inputValue)
     displayMeme()
+    showBorder()
 }
 
 function onAddSticker(id){
+    displayMeme()
     addSticker(id)
+    showBorder()
     // gCurrImg=gElCanvas
-    // displayMeme()
 }
 const KEY='memesDB'
 const CLASS_KEY='classDB'
@@ -164,7 +179,6 @@ function onLoadMemes(){
     var elSavedImgs=document.querySelector(".saved-memes-container")
     for(i;i<imgs.length;i++)
     {
-        console.log(imgs[i])
         elSavedImgs.innerHTML+=`<img src="${imgs[i]}" onclick="onDraw(this)">`
     }
 }
@@ -182,26 +196,19 @@ function ontoggleAll(){
 
 function toggleSaved(){
     document.body.classList.toggle("saved-memes-only")
-    
 }
 
 function onAlign(direction){
     align(direction)
     displayMeme()
+    showBorder()
+
 }
 
 function onColorChange(newColor){
     changeColor(newColor)
     displayMeme()
+    showBorder()
 }
 
-function _addCanvasListener(){
-    var elCanvas=document.querySelector("#my-canvas")
-    elCanvas.addEventListener('keyup',onKey())
-}
 
-function onKey(key){
-    console.log('in')
-    // var elInput=document.querySelector(".meme-input")
-    // elInput.value=key
-}

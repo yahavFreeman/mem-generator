@@ -23,10 +23,10 @@ function addTouchListeners() {
 
 function onDown(ev) {
     const pos = getEvPos(ev)
+    document.body.style.cursor = 'inherit'
     if (isLineClicked(pos)) {
     setLineDrag(true)
     gStartPos = pos
-    document.body.style.cursor = 'grabbing'
     }
 }
 
@@ -39,7 +39,6 @@ function isLineClicked(clickedPos) {
             up=pos.height+pos.size*0.15
             down=pos.height+(pos.size*0.9)  
         }
-        console.log(up,down)
         if ((clickedPos.y >= up) && (down>=clickedPos.y)){
         setGline(indx)
         return true
@@ -52,12 +51,14 @@ function onMove(ev) {
     const line = getLine();
     var isMemeDrag=getMemeDrag()
     if (isMemeDrag) {
+    document.body.style.cursor = 'grabbing'
         const pos = getEvPos(ev)
         const dx = pos.x - gStartPos.x
         const dy = pos.y - gStartPos.y
         gStartPos = pos
         moveLine(dx, dy)
         displayMeme()
+    document.body.style.cursor = 'inherit'
     }
 }
 
@@ -69,7 +70,8 @@ function moveLine(dx, dy) {
 
 function onUp() {
     setLineDrag(false)
-    document.body.style.cursor = 'inherit'
+    document.body.style.cursor = 'grab'
+    showBorder()
 }
 
 function resizeCanvas() {
