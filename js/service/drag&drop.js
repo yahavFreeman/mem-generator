@@ -70,7 +70,7 @@ function onMove(ev) {
         displayMeme()
     }else if (!isMemeDrag && isMemeResize){
         console.log('in')
-        document.body.style.cursor = 'size'
+        document.body.style.cursor = 'nwse-resize'
         const pos = getEvPos(ev)
         const dy = pos.y - gStartPos.y
         gStartPos = pos
