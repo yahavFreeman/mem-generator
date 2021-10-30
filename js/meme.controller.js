@@ -211,4 +211,3 @@ function onColorChange(newColor){
     showBorder()
 }
 
-

@@ -8,6 +8,7 @@ var gMeme = {
     selectedImgId: 1, 
     selectedLineIdx: 0, 
     isDrag:false,
+    isResize:false,
     lines: [ { txt: 'I never eat Falafel', 
     size: 50, 
     align: 'center', 
@@ -144,9 +145,19 @@ function showBorder(){
     gCtx.rect(x, y,xEnd,yEnd);
     gCtx.strokeStyle = 'white';
     gCtx.stroke();
+    if (gMeme.lines[gLine].isSticker){
+        drawArc(x+xEnd,y+yEnd)
+    }
   }
 
-  
+  function drawArc(x, y) {
+    gMeme.lines[gLine].isSticker.resize={x,y}
+    gCtx.beginPath();
+    gCtx.lineWidth = 10;
+    gCtx.arc(x, y, 6, 0, 2 * Math.PI);
+    gCtx.fillStyle = 'blue';
+    gCtx.fill();
+  }
 
 function clearInput(){
     var elInput=document.querySelector(".meme-input")
@@ -241,3 +252,33 @@ function resetWords(words){
 function setLineDrag(isDrag) {
     gMeme.isDrag = isDrag
 }
+
+function setStickerResize(isResize){
+    gMeme.isResize = isResize
+}
+
+function getMemeResize(){
+    return gMeme.isResize
+}
+
+function resizeSticker(dy){
+    gMeme.lines[gLine].size+=dy
+    gMeme.lines[gLine].isSticker.size+=dy
+}
+
+// const btn = document.querySelector('.api');
+
+//   btn.addEventListener('click', async () => {
+//     var dataURL = gElCanvas.toDataURL();
+//     try {
+//         const shareData={
+//             title:'meme',
+//             test:'this is the meme i created',
+//             // files:[file]
+//             url:dataURL
+// }
+//       await navigator.share(shareData)
+//     } catch(err) {
+//       console.log('Error: ' + err)
+//     }
+//   });

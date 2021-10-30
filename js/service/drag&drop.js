@@ -23,6 +23,15 @@ function addTouchListeners() {
 
 function onDown(ev) {
     const pos = getEvPos(ev)
+    var memeLines=getMeme()
+    const line = getLine();
+    // console.log(Math.sqrt((pos.x - memeLines[line].isSticker.resize.x) ** 2 + (pos.y - memeLines[line].isSticker.resize.y) ** 2))
+    console.log(memeLines[line].isSticker)
+    if(memeLines[line].isSticker && Math.sqrt((pos.x - memeLines[line].isSticker.resize.x) ** 2 + (pos.y - memeLines[line].isSticker.resize.y) ** 2)<=6){
+    gStartPos = pos
+        setStickerResize(true)
+        return
+    }
     document.body.style.cursor = 'inherit'
     if (isLineClicked(pos)) {
     setLineDrag(true)
@@ -50,7 +59,8 @@ function isLineClicked(clickedPos) {
 function onMove(ev) {
     const line = getLine();
     var isMemeDrag=getMemeDrag()
-    if (isMemeDrag) {
+    var isMemeResize=getMemeResize()
+    if (isMemeDrag && !isMemeResize) {
     document.body.style.cursor = 'grabbing'
         const pos = getEvPos(ev)
         const dx = pos.x - gStartPos.x
@@ -58,8 +68,16 @@ function onMove(ev) {
         gStartPos = pos
         moveLine(dx, dy)
         displayMeme()
-    document.body.style.cursor = 'inherit'
+    }else if (!isMemeDrag && isMemeResize){
+        console.log('in')
+        document.body.style.cursor = 'size'
+        const pos = getEvPos(ev)
+        const dy = pos.y - gStartPos.y
+        gStartPos = pos
+        resizeSticker(dy)
+        displayMeme()
     }
+
 }
 
 function moveLine(dx, dy) {
@@ -70,6 +88,7 @@ function moveLine(dx, dy) {
 
 function onUp() {
     setLineDrag(false)
+    setStickerResize(false)
     document.body.style.cursor = 'grab'
     showBorder()
 }
