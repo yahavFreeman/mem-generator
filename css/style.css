@@ -213,8 +213,18 @@ body.meme-now .search-bar-container {
   width: 30px;
 }
 
+.back:hover{
+    background-color: #f8bf7e;
+    cursor: pointer;
+}
+
 .api {
   margin-top: 5px;
+}
+
+.api:hover{
+    background-color: #f8bf7e;
+    cursor: pointer;
 }
 
 .download-btn {
@@ -261,6 +271,15 @@ body.saved-memes-only .image-gallery {
 }
 body.menu-open .search-words {
   display: none;
+}
+
+.upload-label:hover{
+color: #ff9826;
+cursor: pointer;
+}
+
+.color-input:hover{
+    cursor: pointer;
 }
 
 /* nav bar hamburger */

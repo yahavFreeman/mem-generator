@@ -43,73 +43,74 @@
             </canvas>
             <div class="user-input flex">
                 <div class="box">
-                <div class="flex space-between">
-                    <label for="files" class="btn" style="font-size: 1rem;width: 60px;">Choose Image</label>
-                    <input id="files" type="file" class="file-input btn" name="image" onchange="onImgInput(event)"
-                        style="font-size: 0.7rem; color:transparent;width: 0; visibility: hidden;" />
-                    <input class="meme-input" type="text" placeholder="I never eat Falafel"
-                        onkeyup="onChangeText(this)">
-                    <input class="color-input" type="color" value=#ff9826 onchange="onColorChange(this.value)">
-                </div>
+                    <div class="flex space-between">
+                        <label for="files" class="btn upload-label" style="font-size: 1rem;width: 60px; ">Choose Image</label>
+                        <input id="files" type="file" class="file-input btn" name="image" onchange="onImgInput(event)"
+                            style="font-size: 0.7rem; color:transparent;width: 0; visibility: hidden;" />
+                        <input class="meme-input" type="text" placeholder="I never eat Falafel"
+                            onkeyup="onChangeText(this)">
+                        <input class="color-input" type="color" value=#ff9826 onchange="onColorChange(this.value)">
+                    </div>
 
-                <div class="input-btns-container">
-                    <div class="input-btns first-input-btns-container space-between">
-                        <button class="size-change" onclick="onFont(5)"><img
-                                src="https://img.icons8.com/material-outlined/24/000000/increase-font.png" /></button>
-                        <button class="size-change" onclick="onFont(-5)"><img
-                                src="https://img.icons8.com/material-rounded/24/000000/decrease-font.png" /></button>
-                                <button class="align-line-left" onclick="onAlign('right')"><img
+                    <div class="input-btns-container">
+                        <div class="input-btns first-input-btns-container space-between">
+                            <button class="size-change" onclick="onFont(5)"><img
+                                    src="https://img.icons8.com/material-outlined/24/000000/increase-font.png" /></button>
+                            <button class="size-change" onclick="onFont(-5)"><img
+                                    src="https://img.icons8.com/material-rounded/24/000000/decrease-font.png" /></button>
+                            <button class="align-line-left" onclick="onAlign('right')"><img
                                     src="https://img.icons8.com/ios/20/000000/align-cell-content-left.png" /></button>
                             </button>
                             <button class="align-line-center" onclick="onAlign('center')"><img
                                     src="https://img.icons8.com/ios/20/000000/align-cell-content-center.png" /></button>
                             <button class="align-line-right" onclick="onAlign('left')"><img
                                     src="https://img.icons8.com/ios/20/000000/align-cell-content-right.png" /></button>
-                                </div>
-                                <div class="input-btns second-input-btns-container space-between">
-                        <button class="line-height" onclick="onHeight(-5)">⬆</button>
-                        <button class="line-height" onclick="onHeight(5)">⬇</button>
-                        <button class="add-line" onclick="onAddLine()">+</button>
-                        <button class="switch-lines" onclick="onSwitchLine()">⇅</button>
-                        <button class="remove-line" onclick="onDelLine()">🗑</button>
-                        
-                    </div>
-                    <div class="input-btns third-input-btns-container space-between">
-                        <button class="btn" onclick="uploadImg()"><img
-                                src="https://img.icons8.com/ios/20/000000/share--v1.png" />
-                        </button>
-                        <a href="#" class="download-link" onclick="downloadImg(this)" download="my-img.jpg">
-                            <img class="download-btn" src="https://img.icons8.com/ios/20/000000/download--v1.png" /></a>
-                        <button class="save-btn" onclick="onSave()"><img
-                                src="https://img.icons8.com/ios/20/000000/save.png" /></button>
-                       
-                    </div>
-                </div>
-                <div class="sticker-emojo-box">
-                    <div class="emojis emojis-container flex space-between">
-                        <span onclick="onAddEmoji(this)">😎</span><span onclick="onAddEmoji(this)">😁</span>
-                        <span onclick="onAddEmoji(this)">😂</span><span onclick="onAddEmoji(this)">😘</span>
-                        <span onclick="onAddEmoji(this)">🤣</span><span onclick="onAddEmoji(this)">😍</span>
-                        <span onclick="onAddEmoji(this)">😫</span><span onclick="onAddEmoji(this)">🤕</span>
-                        <span onclick="onAddEmoji(this)">😮</span>
-                    </div>
-                    <div class="stickers-container flex space-between">
-                        <img id="glasses" src="img/glasses.png" onclick="onAddSticker(this.id)">
-                        <img id="hat" src="/img/thug-life-meme-transparent-background-409868.png"
-                            onclick="onAddSticker(this.id)">
-                        <img id="sad-frog" src="img/pngaaa.com-1725625.png" onclick="onAddSticker(this.id)">
-                        <img id="face" src="/img/derp.png" onclick="onAddSticker(this.id)">
-                        <img id="dog" src="/img/dogge.png" onclick="onAddSticker(this.id)">
-                    </div>
-                </div>
-                <p class="user-msg"></p>
-                <div class="share-container"></div>
-                <div class="last-box flex space-between">
-                    <button class="back" onclick="toggleMeme()">🢦</button>
-                    <button class="api" onclick="onShareAPI()">Share API</button>
-                </div>
+                        </div>
+                        <div class="input-btns second-input-btns-container space-between">
+                            <button class="line-height" onclick="onHeight(-5)">⬆</button>
+                            <button class="line-height" onclick="onHeight(5)">⬇</button>
+                            <button class="add-line" onclick="onAddLine()">+</button>
+                            <button class="switch-lines" onclick="onSwitchLine()">⇅</button>
+                            <button class="remove-line" onclick="onDelLine()">🗑</button>
 
-            </div>
+                        </div>
+                        <div class="input-btns third-input-btns-container space-between">
+                            <button class="btn" onclick="uploadImg()"><img
+                                    src="https://img.icons8.com/ios/20/000000/share--v1.png" />
+                            </button>
+                            <a href="#" class="download-link" onclick="downloadImg(this)" download="my-img.jpg">
+                                <img class="download-btn"
+                                    src="https://img.icons8.com/ios/20/000000/download--v1.png" /></a>
+                            <button class="save-btn" onclick="onSave()"><img
+                                    src="https://img.icons8.com/ios/20/000000/save.png" /></button>
+
+                        </div>
+                    </div>
+                    <div class="sticker-emojo-box">
+                        <div class="emojis emojis-container flex space-between">
+                            <span onclick="onAddEmoji(this)">😎</span><span onclick="onAddEmoji(this)">😁</span>
+                            <span onclick="onAddEmoji(this)">😂</span><span onclick="onAddEmoji(this)">😘</span>
+                            <span onclick="onAddEmoji(this)">🤣</span><span onclick="onAddEmoji(this)">😍</span>
+                            <span onclick="onAddEmoji(this)">😫</span><span onclick="onAddEmoji(this)">🤕</span>
+                            <span onclick="onAddEmoji(this)">😮</span>
+                        </div>
+                        <div class="stickers-container flex space-between">
+                            <img id="glasses" src="img/glasses.png" onclick="onAddSticker(this.id)">
+                            <img id="hat" src="/img/thug-life-meme-transparent-background-409868.png"
+                                onclick="onAddSticker(this.id)">
+                            <img id="sad-frog" src="img/pngaaa.com-1725625.png" onclick="onAddSticker(this.id)">
+                            <img id="face" src="/img/derp.png" onclick="onAddSticker(this.id)">
+                            <img id="dog" src="/img/dogge.png" onclick="onAddSticker(this.id)">
+                        </div>
+                    </div>
+                    <p class="user-msg"></p>
+                    <div class="share-container"></div>
+                    <div class="last-box flex space-between">
+                        <button class="back" onclick="toggleMeme()">🢦</button>
+                        <button class="api" onclick="onShareAPI()">Share API</button>
+                    </div>
+
+                </div>
             </div>
         </div>
         <div class="image-gallery gallery-grid center">
@@ -144,7 +145,7 @@
     </main>
 
     <footer>
-        
+
     </footer>
 
     <script src="js/service/storage.service.js"></script>
