@@ -1,4 +1,7 @@
 /* helpers */
+* {
+  box-sizing: border-box;
+}
 html {
   font-family: Roboto;
 }
@@ -61,14 +64,14 @@ body {
   font-size: 1rem;
 }
 
-.file-input{
-    margin-left: auto;
-    margin-right: auto;
+.file-input {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .input-btns > * {
-  height: 40px;
-  font-size: 1.5rem;
+  height: 50px;
+  font-size: 1.8rem;
   background-color: transparent;
   border: none;
   text-decoration: none;
@@ -89,7 +92,10 @@ body {
 }
 .input-btns {
   display: flex;
-  justify-content: center;
+}
+
+.last-box > * {
+  background-color: #ff9826;
 }
 
 .search-words {
@@ -113,8 +119,12 @@ body {
   border: none;
   position: absolute;
   bottom: 0;
-  right: 30px;
+  right: 5px;
 }
+
+/* .user-input>*{
+    margin-bottom: 10px;
+} */
 
 .search-words > *:hover {
   cursor: pointer;
@@ -126,25 +136,58 @@ body {
 }
 
 body.meme-now .main-canvas {
-    flex-basis: 50%;
+  margin-top: 15px;
+  flex-basis: 50%;
   display: block;
   display: flex;
-  /* flex-direction: column; */
-  margin-left: auto;
-  margin-right: auto;
+  flex-direction: column;
 }
 body.meme-now .image-gallery {
   display: none;
 }
+footer {
+  display: none;
+}
+
+body.meme-now footer {
+  display: inline-block;
+  position: absolute;
+  height: 50px;
+  width: 100%;
+  background-color: white;
+  bottom: 0;
+}
+
+body.meme-now .search-bar-container {
+  display: none;
+}
+
 .meme-input {
   height: 20px;
+  margin-top: 6px;
 }
+
+.color-input {
+  margin-top: 2px;
+}
+
+.box {
+  border: solid 2px rgb(24, 23, 23);
+  padding: 6px;
+  box-shadow: 7px 5px grey;
+}
+
+.sticker-emojo-box {
+  border: solid 2px rgb(24, 23, 23);
+  box-shadow: 4px 2px grey;
+}
+
 .user-input {
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
   max-width: 300px;
   margin-inline-start: 100px;
-  margin-inline-end: 20px;
   justify-content: center;
 }
 
@@ -156,17 +199,37 @@ body.meme-now .image-gallery {
 .image-gallery > *:hover {
   cursor: pointer;
 }
+/* .share-container>*{
+    display: flex;
+    justify-content: center;
+} */
+.third-input-btns-container {
+  position: relative;
+  width: 80%;
+  margin-inline-start: 10%;
+}
+.back {
+  margin-top: 5px;
+  width: 30px;
+}
+
+.api {
+  margin-top: 5px;
+}
+
+.download-btn {
+  position: absolute;
+  bottom: 17px;
+  left: 102px;
+}
 
 /* stickers and emojis */
 .emojis > *:hover {
   cursor: pointer;
 }
 .emojis {
-  justify-content: center;
-}
-
-.stickers-container{
-    text-align: center;
+  height: 50px;
+  padding: 0;
 }
 
 .stickers-container > img {
@@ -323,5 +386,8 @@ body.menu-open .search-words {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
     gap: 25px;
+  }
+  body.meme-now .main-canvas {
+    flex-direction: row;
   }
 }

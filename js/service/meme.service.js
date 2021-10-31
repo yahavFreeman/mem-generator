@@ -1,9 +1,6 @@
 'use strict'
 var gLine=0
 var gScrollLine=0
-var gKeywords = {'happy': 12,'funny puk': 1} 
-var gImgs = [{id: 1, url: 'img/1.jpg', keywords: ['funny']},
-{id: 2, url: 'img/2.jpg', keywords: ['happy']}]; 
 var gMeme = { 
     selectedImgId: 1, 
     selectedLineIdx: 0, 
@@ -21,7 +18,6 @@ var gMeme = {
 var gStickerCounter=0
 var gStickers=[]
 
-
 function draw(img){
     // if (img.id!=='my-canvas')
     gElCanvas.height=(img.height*gElCanvas.width)/img.width
@@ -29,6 +25,7 @@ function draw(img){
     gCtx.drawImage(memeImg,0,0,gElCanvas.width,gElCanvas.height)
     addStickersToNewImg()
 }
+
 function setGsticker(id){
     var sticker={
     }
@@ -185,6 +182,7 @@ function changeColor(newColor){
 function delLine(){
     gMeme.lines.splice(gLine,1)
     gLine-=1
+    gStickers.splice(gStickers.length-1,1)
 }
 
 function changeFont(num){
@@ -224,11 +222,11 @@ gMeme.lines.push(line)
 
 function switchLine(){
     gLine=gScrollLine
-    gScrollLine+=1
-    if(gScrollLine>gMeme.lines.length){
+    if(gScrollLine>=gMeme.lines.length){
         gScrollLine=0
         gLine=0
     }
+    gScrollLine+=1
 }
 
 function search(word,imgs){
@@ -266,19 +264,3 @@ function resizeSticker(dy){
     gMeme.lines[gLine].isSticker.size+=dy
 }
 
-// const btn = document.querySelector('.api');
-
-//   btn.addEventListener('click', async () => {
-//     var dataURL = gElCanvas.toDataURL();
-//     try {
-//         const shareData={
-//             title:'meme',
-//             test:'this is the meme i created',
-//             // files:[file]
-//             url:dataURL
-// }
-//       await navigator.share(shareData)
-//     } catch(err) {
-//       console.log('Error: ' + err)
-//     }
-//   });

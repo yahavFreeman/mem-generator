@@ -25,8 +25,6 @@ function onDown(ev) {
     const pos = getEvPos(ev)
     var memeLines=getMeme()
     const line = getLine();
-    // console.log(Math.sqrt((pos.x - memeLines[line].isSticker.resize.x) ** 2 + (pos.y - memeLines[line].isSticker.resize.y) ** 2))
-    console.log(memeLines[line].isSticker)
     if(memeLines[line].isSticker && Math.sqrt((pos.x - memeLines[line].isSticker.resize.x) ** 2 + (pos.y - memeLines[line].isSticker.resize.y) ** 2)<=6){
     gStartPos = pos
         setStickerResize(true)
@@ -69,7 +67,6 @@ function onMove(ev) {
         moveLine(dx, dy)
         displayMeme()
     }else if (!isMemeDrag && isMemeResize){
-        console.log('in')
         document.body.style.cursor = 'nwse-resize'
         const pos = getEvPos(ev)
         const dy = pos.y - gStartPos.y

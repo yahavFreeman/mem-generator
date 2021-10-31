@@ -16,7 +16,6 @@ function init() {
 }
 
 function onDraw(img){
-    // _addCanvasListener()
     toggleMeme()
     reset()
     gCurrImg=img
@@ -209,5 +208,19 @@ function onColorChange(newColor){
     changeColor(newColor)
     displayMeme()
     showBorder()
+}
+
+async function onShareAPI(){
+    const canvasToUrl=gElCanvas.toDataURL()
+    const blob = await (await fetch(canvasToUrl)).blob()
+    const files=[
+        new File([blob],'meme.png',{
+        type: blob.type,
+        lastModified: new Date().getTime(),
+    })]
+    const shareData={
+        files:files
+    }
+    navigator.share(shareData)
 }
 
